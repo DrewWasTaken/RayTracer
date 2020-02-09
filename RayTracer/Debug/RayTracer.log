@@ -1,7 +1,18 @@
 ﻿  main.cpp
 F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\vec3.h(60,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\vec3.h(153,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(14,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(15,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(15,68): warning C4305: 'argument': truncation from 'double' to 'float'
-  RayTracer.vcxproj -> F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\Debug\RayTracer.exe
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\hitable_list.h(24,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\numgen.h(8,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\material.h(21,38): error C3861: 'random_in_unit_sphere': identifier not found
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(34,8): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(50,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(51,21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(51,72): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(87,80): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(87,83): error C2661: 'sphere::sphere': no overloaded function takes 3 arguments
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(88,85): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(88,88): error C2661: 'sphere::sphere': no overloaded function takes 3 arguments
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(89,75): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(89,78): error C2661: 'sphere::sphere': no overloaded function takes 3 arguments
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(90,76): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(90,79): error C2661: 'sphere::sphere': no overloaded function takes 3 arguments
