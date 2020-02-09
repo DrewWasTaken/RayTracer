@@ -16,18 +16,6 @@
 
 using namespace std;
 
-vec3 random_in_unit_sphere()
-{
-    vec3 p;
-    do
-    {
-        p = 2.0 * vec3(rand_float(), rand_float(), rand_float()) - vec3(1, 1, 1);
-    } 
-    while (p.squared_length() >= 1.0);
-    return p;
-}
-
-
 vec3 color(const ray &r, hitable *world, int depth) //Blends White + Blue, Dependant On Y Axis
 {
     hit_record rec;
@@ -84,10 +72,10 @@ int main()
     //std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
     hitable* list[4];
-    list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.8, 0.3, 0.3))); //Create Green Sphere
-    list[1] = new sphere(vec3(0, -100.5, -1), 100, new lambertian(vec3(0.8, 0.8, 0.0))); //Create Blue + Purple Sphere
-    list[2] = new sphere(vec3(1, 0, -1), 0.5, new metal(vec3(0.8, 0.6, 0.2))); //Create Blue + Purple Sphere
-    list[3] = new sphere(vec3(-1, 0, -1), 0.5, new metal(vec3(0.8, 0.8, 0.8))); //Create Blue + Purple Sphere
+    list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.8, 0.3, 0.3))); //Floor
+    list[1] = new sphere(vec3(0, -100.5, -1), 100, new lambertian(vec3(0.8, 0.8, 0.0))); //Middle Sphere
+    list[2] = new sphere(vec3(1, 0, -1), 0.5, new metal(vec3(0.8, 0.6, 0.2))); //Right Sphere
+    list[3] = new sphere(vec3(-1, 0, -1), 0.5, new metal(vec3(0.8, 0.8, 0.8))); //Left Sphere
     hitable* world = new hitable_list(list, 4);
     camera cam;
 
