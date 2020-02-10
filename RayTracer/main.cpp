@@ -60,8 +60,8 @@ int main()
 
     //}
 
-    int nx = 200;
-    int ny = 100;
+    int nx = 700;
+    int ny = 350;
     int ns = 100;
 
     ofstream img("picture.ppm");
@@ -71,12 +71,13 @@ int main()
 
     //std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
-    hitable* list[4];
+    hitable* list[5];
     list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.8, 0.3, 0.3))); //Floor
-    list[1] = new sphere(vec3(0, -100.5, -1), 100, new lambertian(vec3(0.8, 0.8, 0.0))); //Middle Sphere
-    list[2] = new sphere(vec3(1, 0, -1), 0.5, new metal(vec3(0.8, 0.6, 0.2))); //Right Sphere
-    list[3] = new sphere(vec3(-1, 0, -1), 0.5, new metal(vec3(0.8, 0.8, 0.8))); //Left Sphere
-    hitable* world = new hitable_list(list, 4);
+    list[1] = new sphere(vec3(0, -100.5, -1), 100, new lambertian(vec3(0.8, 0.8, 0.0))); //Middle Matte Sphere
+    list[2] = new sphere(vec3(1, 0, -1), 0.5, new metal(vec3(0.8, 0.6, 0.2), 1.0)); //Right Metallic Sphere
+    list[3] = new sphere(vec3(-1, 0, -1), 0.5, new dielectric (1.5)); //Left Glass Sphere
+    list[4] = new sphere(vec3(-1, 0, -1), -0.45, new dielectric(1.5)); //Left Glass Sphere
+    hitable* world = new hitable_list(list, 5);
     camera cam;
 
     for (int j = ny - 1; j >= 0; j--)
