@@ -6,17 +6,27 @@ F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\numgen.h(8,1
 F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\camera.h(28,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\material.h(34,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\material.h(103,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(22,8): warning C4305: 'argument': truncation from 'double' to 'float'
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(38,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(39,21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(39,72): warning C4305: 'argument': truncation from 'double' to 'float'
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(75,80): warning C4305: 'argument': truncation from 'double' to 'float'
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(76,85): warning C4305: 'argument': truncation from 'double' to 'float'
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(77,75): warning C4305: 'argument': truncation from 'double' to 'float'
-F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(79,70): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(19,8): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(35,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(36,21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(36,72): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(51,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(51,81): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(51,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(52,20): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(60,26): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(67,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(66,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(65,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(68,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(69,26): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(73,81): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(81,82): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(82,76): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\main.cpp(125,25): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating code
-  10 of 192 functions ( 5.2%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    18 functions had inline decision re-evaluated but remain unchanged
+  2 of 193 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   RayTracer.vcxproj -> F:\3rd Year\AT (Advanced Technologies)\Task 3 (RayTracer)\RayTracer\Release\RayTracer.exe
