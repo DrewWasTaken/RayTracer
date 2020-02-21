@@ -3,7 +3,8 @@
 #ifndef MATERIALH
 #define MATERIALH
 #include "ray.h"
-#include "hitable.h"
+#include "hittable.h"
+#include "texture.h"
 
 float schlick(float cosine, float ref_idx)
 {
@@ -52,11 +53,12 @@ class lambertian : public material
 {
 public:
 	lambertian(texture *a) : albedo(a) {}
-	virtual bool scatter(const ray& r_in, const hit_record& rec, vec3& attenuation, ray& scattered) const
+	virtual bool scatter(const ray& r_in, const hit_record& rec, 
+						 vec3& attenuation, ray& scattered) const
 	{
 		vec3 target = rec.p + rec.normal + random_in_unit_sphere();
 		scattered = ray(rec.p, target - rec.p);
-		attenuation = albedo->value(0,0,rec.p);
+		attenuation = albedo->value(0, 0, rec.p);
 		return true;
 	}
 		texture *albedo;
@@ -126,5 +128,23 @@ class dielectric : public material
 		float ref_idx;
 };
 
+
+class checker_texture : public texture
+{
+public:
+	checker_texture() {}
+	checker_texture(texture* t0, texture* t1) : even(t0), odd(t1) {}
+	virtual vec3 value(float u, float v, const vec3& p) const
+	{
+		float sines = sin(10 * p.x()) * sin(10 * p.z());
+		if (sines < 0)
+			return odd->value(u, v, p);
+		else
+			return even->value(u, v, p);
+	}
+
+	texture* odd;
+	texture* even;
+};
 
 #endif

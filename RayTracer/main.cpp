@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include "sphere.h"
-#include "hitable_list.h"
+#include "hittable_list.h"
 #include "float.h"
 #include "camera.h"
 #include "numgen.h"
@@ -14,7 +14,7 @@
 
 using namespace std;
 
-vec3 color(const ray &r, hitable *world, int depth) //Blends White + Blue, Dependant On Y Axis
+vec3 color(const ray &r, hittable *world, int depth) //Blends White + Blue, Dependant On Y Axis
 {
     hit_record rec;
     if (world->hit(r, 0.001, FLT_MAX, rec)) //0.001 Cleans Up Near 0 Hits
@@ -38,10 +38,33 @@ vec3 color(const ray &r, hitable *world, int depth) //Blends White + Blue, Depen
     }
 }
 
-hitable *random_scene()
+hittable* two_spheres()
+{
+    texture* checker = new checker_texture(
+        new constant_texture(vec3(0.2, 0.3, 0.1)),
+        new constant_texture(vec3(0.9, 0.9, 0.9))
+        );
+
+    int n = 50;
+    hittable** list = new hittable * [n + 1];
+    list[0] = new sphere(vec3(0, -10, 0), 10, new lambertian(checker));
+    list[1] = new sphere(vec3(0, 10, 0), 10, new lambertian(checker));
+    
+    return new hittable_list(list, 2);
+}
+
+
+
+hittable *random_scene()
 {
     int n = 50000;
-    hitable **list = new hitable*[n + 1];
+    hittable **list = new hittable*[n + 1];
+
+    texture* checker = new checker_texture(
+        new constant_texture(vec3(0.2, 0.3, 0.1)),
+        new constant_texture(vec3(0.9, 0.9, 0.9))
+    );
+
     list[0] = new sphere(vec3(0, -1000, 0), 1000, new lambertian(checker));
     int i = 1;
     for (int a = -10; a < 10; a++)
@@ -55,10 +78,9 @@ hitable *random_scene()
                     if (choose_mat < 0.8) //Diffuse
                     {
                         list[i++] = new moving_sphere(center, center+vec3(0,0.5 *rand_float(), 0), 0.0, 1.0, 0.2,
-                            new lambertian(vec3(rand_float() * rand_float(),
+                            new lambertian((new constant_texture(vec3(rand_float() * rand_float(),
                                 rand_float() * rand_float(),
-                                rand_float() * rand_float()))
-                        );
+                                rand_float() * rand_float())))));
                     }
                     else if (choose_mat < 0.95) //Metallic
                     {
@@ -82,7 +104,7 @@ hitable *random_scene()
     list[i++] = new sphere(vec3(-4, 1, 0), 1.0, new lambertian(new constant_texture(vec3(0.5, 0.5, 0.5))));
     list[i++] = new sphere(vec3(4, 1, 0), 1.0, new metal(vec3(0.7, 0.6, 0.5), 0.0));
 
-    return new hitable_list(list, i);
+    return new hittable_list(list, i);
 
 }
 
@@ -116,8 +138,14 @@ int main()
     img << nx << " " << ny << endl;
     img << "255" << endl;
 
-    //std::cout << "P3\n" << nx << " " << ny << "\n255\n";
-    hitable* world = random_scene();
+    //---------------------\\
+       Select World To Run
+    //---------------------\\
+    
+    //hittable* world = random_scene();
+
+    hittable* world = two_spheres();
+
 
     //Adjust Camera Viewpoint
     vec3 lookfrom(13, 2, 3);
