@@ -148,9 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aabb.h" />
+    <ClInclude Include="box.h" />
     <ClInclude Include="bvhNode.h" />
     <ClInclude Include="camera.h" />
-    <ClInclude Include="checkertexture.h" />
+    <ClInclude Include="ConstantMedium.h" />
     <ClInclude Include="constant_texture.h" />
     <ClInclude Include="moving_sphere.h" />
     <ClInclude Include="material.h" />

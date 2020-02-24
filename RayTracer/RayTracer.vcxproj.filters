@@ -47,9 +47,6 @@
     <ClInclude Include="constant_texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="checkertexture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Aabb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="aarect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantMedium.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

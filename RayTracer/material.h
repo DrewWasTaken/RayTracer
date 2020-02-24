@@ -147,23 +147,18 @@ class dielectric : public material
 		float ref_idx;
 };
 
-
-class checker_texture : public texture
+class isotropic : public material
 {
 public:
-	checker_texture() {}
-	checker_texture(texture* t0, texture* t1) : even(t0), odd(t1) {}
-	virtual vec3 value(float u, float v, const vec3& p) const
+	isotropic(texture* a) : albedo(a) {}
+	virtual bool scatter(const ray& r_in, const hit_record& rec,
+		vec3& attenuation, ray& scattered) const
 	{
-		float sines = sin(10 * p.x()) * sin(10 * p.z());
-		if (sines < 0)
-			return odd->value(u, v, p);
-		else
-			return even->value(u, v, p);
+		scattered = ray(rec.p, random_in_unit_sphere());
+		attenuation = albedo->value(rec.u, rec.v, rec.p);
+		return true;
 	}
-
-	texture* odd;
-	texture* even;
+	texture* albedo;
 };
 
 #endif

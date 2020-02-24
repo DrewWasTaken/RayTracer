@@ -5,14 +5,17 @@
 #include <fstream>
 
 #include "aarect.h"
+#include "box.h"
+#include "bvhNode.h"
 #include "camera.h"
+#include "ConstantMedium.h"
 #include "float.h"
 #include "hittable_list.h"
 #include "material.h"
 #include "moving_sphere.h"
 #include "numgen.h"
 #include "sphere.h"
-
+#include "texture.h"
 
 using namespace std;
 
@@ -33,10 +36,39 @@ vec3 color(const ray& r, hittable* world, int depth) //Blends White + Blue, Depe
         return vec3(0, 0, 0);
 }
 
+hittable* cornell_smoke() {
+    hittable** list = new hittable * [8];
+    int i = 0;
+    material* red = new lambertian(new constant_texture(vec3(0.65, 0.05, 0.05)));
+    material* white = new lambertian(new constant_texture(vec3(0.73, 0.73, 0.73)));
+    material* green = new lambertian(new constant_texture(vec3(0.12, 0.45, 0.15)));
+    material* light = new diffuse_light(new constant_texture(vec3(7, 7, 7)));
 
-hittable* cornell_box()
+    list[i++] = new flip_normals(new yz_rect(0, 555, 0, 555, 555, green));
+    list[i++] = new yz_rect(0, 555, 0, 555, 0, red);
+    list[i++] = new xz_rect(113, 443, 127, 432, 554, light);
+    list[i++] = new flip_normals(new xz_rect(0, 555, 0, 555, 555, white));
+    list[i++] = new xz_rect(0, 555, 0, 555, 0, white);
+    list[i++] = new flip_normals(new xy_rect(0, 555, 0, 555, 555, white));
+
+    hittable* b1 = new translate(
+        new rotate_y(new box(vec3(0, 0, 0), vec3(165, 165, 165), white), -18),
+        vec3(130, 0, 65));
+    hittable* b2 = new translate(
+        new rotate_y(new box(vec3(0, 0, 0), vec3(165, 330, 165), white), 15),
+        vec3(265, 0, 295));
+
+    list[i++] = new constant_medium(
+        b1, 0.01, new constant_texture(vec3(1.0, 1.0, 1.0)));
+    list[i++] = new constant_medium(
+        b2, 0.01, new constant_texture(vec3(0.0, 0.0, 0.0)));
+
+    return new hittable_list(list, i);
+}
+
+hittable* cornell_box() //4 Walls, 2 Instances, 1 Light
 {
-    hittable** list = new hittable * [6];
+    hittable** list = new hittable * [8];
     int i = 0;
     material* red = new lambertian(new constant_texture(vec3(0.65, 0.05, 0.05)));
     material* white = new lambertian(new constant_texture(vec3(0.73, 0.73, 0.73)));
@@ -49,7 +81,11 @@ hittable* cornell_box()
     list[i++] = new flip_normals(new xz_rect(0, 555, 0, 555, 555, white));
     list[i++] = new xz_rect(0, 555, 0, 555, 0, white);
     list[i++] = new flip_normals(new xy_rect(0, 555, 0, 555, 555, white));
-
+    list[i++] = new translate(new rotate_y(new box(vec3(0,0,0), 
+                vec3(165, 165, 165), white), -18), vec3(130,0,65));
+    list[i++] = new translate(new rotate_y(new box(vec3(0, 0, 0), 
+                vec3(165, 330, 165), white), 15),vec3(265, 0, 295)
+    );
     return new hittable_list(list, i);
 }
 
@@ -69,7 +105,8 @@ hittable* simple_light()
     return new hittable_list(list, 4);
 }
 
-hittable* two_spheres()
+
+hittable* two_spheres() // 2 Checkered Spheres
 {
     texture* checker = new checker_texture(
         new constant_texture(vec3(0.2, 0.3, 0.1)),
@@ -85,8 +122,7 @@ hittable* two_spheres()
 }
 
 
-
-hittable *random_scene()
+hittable *random_scene() //50,000 Balls
 {
     int n = 50000;
     hittable **list = new hittable*[n + 1];
@@ -130,34 +166,24 @@ hittable *random_scene()
         }
     }
 
-
     list[i++] = new sphere(vec3(0, 1, 0), 1.0, new dielectric(1.5));
     list[i++] = new sphere(vec3(-4, 1, 0), 1.0, new lambertian(new constant_texture(vec3(0.5, 0.5, 0.5))));
     list[i++] = new sphere(vec3(4, 1, 0), 1.0, new metal(vec3(0.7, 0.6, 0.5), 0.0));
 
     return new hittable_list(list, i);
-
 }
 
 
 int main()
 {
     //sf::RenderWindow window(sf::VideoMode(640, 480), "Ray Tracer");
-
     //while (window.isOpen())
     //{
-
     //    //handle events
-
     //    //update 
-
     //    window.clear();
-
     //    // draw objects 
-
     //    window.display();
-
-
     //}
 
     int nx = 700;
@@ -179,9 +205,15 @@ int main()
 
     //hittable* world = simple_light();
 
-    hittable* world = cornell_box();
+    //hittable* world = cornell_box();
 
-    //Adjust Camera Viewpoint
+    hittable* world = cornell_smoke();
+
+
+    //-----------------------\\
+      Adjust Camera Viewpoint
+    //-----------------------\\
+
     vec3 lookfrom(278, 278, -800);
     vec3 lookat(278, 278, 0);
     float dist_to_focus = 10.0;
